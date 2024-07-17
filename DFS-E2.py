@@ -24,28 +24,29 @@ graph = {
     'Neamt': {'Iasi': 87}
 }
 
-def bfs_explore(graph, start, goal):
+def dfs_explore(graph, start, goal):
     visited = set()
-    queue = deque([(start, [start])])  # Store current path as well
-    while queue:
-        (vertex, path) = queue.popleft()
+    stack = [(start, [start])]  # Store current path as well
+    while stack:
+        (vertex, path) = stack.pop()
         if vertex not in visited:
             visited.add(vertex)
             for neighbor in graph[vertex]:
                 if neighbor == goal:
                     return path + [neighbor]
-                queue.append((neighbor, path + [neighbor]))
+                stack.append((neighbor, path + [neighbor]))
     return None
 
 # Get user input for start and goal
 start_node = input("Enter the start node: ")
 goal_node = input("Enter the goal node: ")
 
-# Find path using BFS
-path = bfs_explore(graph, start_node, goal_node)
+# Find path using DFS
+path = dfs_explore(graph, start_node, goal_node)
 
 # Print the result
 if path:
+    print("DFS :")
     print(f"Path from {start_node} to {goal_node}: {path}")
 else:
     print(f"No path found from {start_node} to {goal_node}.")
