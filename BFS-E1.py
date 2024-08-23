@@ -24,28 +24,34 @@ graph = {
     'Neamt': {'Iasi': 87}
 }
 
-def bfs_explore(graph, start, goal):
+def bfs_explore(graph, start, goal=None):
     visited = set()
     queue = deque([(start, [start])])  # Store current path as well
+    order_of_visit = []
+
     while queue:
         (vertex, path) = queue.popleft()
         if vertex not in visited:
             visited.add(vertex)
+            order_of_visit.append(vertex)
+
             for neighbor in graph[vertex]:
                 if neighbor == goal:
                     return path + [neighbor]
                 queue.append((neighbor, path + [neighbor]))
-    return None
+    
+    return order_of_visit if goal is None else None
 
-# Get user input for start and goal
+# Perform BFS to explore the graph or find a path
 start_node = input("Enter the start node: ")
-goal_node = input("Enter the goal node: ")
+goal_node = input("Enter the goal node (or press Enter to explore the whole graph): ")
 
-# Find path using BFS
-path = bfs_explore(graph, start_node, goal_node)
-
-# Print the result
-if path:
-    print(f"Path from {start_node} to {goal_node}: {path}")
+if goal_node:
+    path = bfs_explore(graph, start_node, goal_node)
+    if path:
+        print(f"Path from {start_node} to {goal_node}: {path}")
+    else:
+        print(f"No path found from {start_node} to {goal_node}.")
 else:
-    print(f"No path found from {start_node} to {goal_node}.")
+    exploration_order = bfs_explore(graph, start_node)
+    print(f"Order of nodes visited starting from {start_node}: {exploration_order}")
