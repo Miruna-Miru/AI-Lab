@@ -1,0 +1,108 @@
+{
+    "pairs": [
+        {
+            "pattern": "my name is (.*)",
+            "responses": [
+                "Hello %1, how are you today?"
+            ]
+        },
+        {
+            "pattern": "hi|hey|hello",
+            "responses": [
+                "Hello",
+                "Hey there"
+            ]
+        },
+        {
+            "pattern": "what is your name?",
+            "responses": [
+                "I am a chatbot created by OpenAI."
+            ]
+        },
+        {
+            "pattern": "how are you ?",
+            "responses": [
+                "I'm doing good\nHow about you?"
+            ]
+        },
+        {
+            "pattern": "sorry (.*)",
+            "responses": [
+                "It's alright",
+                "It's OK, never mind"
+            ]
+        },
+        {
+            "pattern": "I am fine",
+            "responses": [
+                "Great to hear that, How can I help you?"
+            ]
+        },
+        {
+            "pattern": "quit",
+            "responses": [
+                "Bye! Take care."
+            ]
+        },
+        {
+            "pattern": "What are you doing",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "I asked what are you doing",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "yes",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "im am fine",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "I am doing great Too",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "Sure ",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "sure",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "Oops!!",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "It is an expression Oops",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        },
+        {
+            "pattern": "OOps",
+            "responses": [
+                "I don't understand that yet. Can you tell me more?"
+            ]
+        }
+    ]
+}
