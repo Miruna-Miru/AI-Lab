@@ -26,7 +26,7 @@ graph = {
 
 def bfs_explore(graph, start, goal=None):
     visited = set()
-    queue = deque([(start, [start])])  # Store current path as well
+    queue = deque([(start, [start])]) 
     order_of_visit = []
 
     while queue:
@@ -42,16 +42,19 @@ def bfs_explore(graph, start, goal=None):
     
     return order_of_visit if goal is None else None
 
-# Perform BFS to explore the graph or find a path
-start_node = input("Enter the start node: ")
-goal_node = input("Enter the goal node (or press Enter to explore the whole graph): ")
+start_node = input("Enter the start node: ").strip()
 
-if goal_node:
-    path = bfs_explore(graph, start_node, goal_node)
-    if path:
-        print(f"Path from {start_node} to {goal_node}: {path}")
-    else:
-        print(f"No path found from {start_node} to {goal_node}.")
+if start_node not in graph:
+    print(f"Error: '{start_node}' is not a valid node in the graph.")
 else:
-    exploration_order = bfs_explore(graph, start_node)
-    print(f"Order of nodes visited starting from {start_node}: {exploration_order}")
+    goal_node = input("Enter the goal node (or press Enter to explore the whole graph): ").strip()
+    
+    if goal_node:
+        path = bfs_explore(graph, start_node, goal_node)
+        if path:
+            print(f"Path from {start_node} to {goal_node}: {path}")
+        else:
+            print(f"No path found from {start_node} to {goal_node}.")
+    else:
+        exploration_order = bfs_explore(graph, start_node)
+        print(f"Order of nodes visited starting from {start_node}: {exploration_order}")

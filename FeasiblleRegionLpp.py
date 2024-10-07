@@ -1,43 +1,50 @@
 import numpy as np
-import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 
-# Define the constraint lines
-# Constraint 1: 5x1 + 3x2 <= 30
-# Solving for x2: x2 = (30 - 5x1) / 3
-def constraint1(x1):
-    return (30 - 5 * x1) / 3
+def objective_func_example1(X):
+    x, y = X
+    return x**2 + y**2
 
-# Constraint 2: x1 + 2x2 <= 18
-# Solving for x2: x2 = (18 - x1) / 2
-def constraint2(x1):
-    return (18 - x1) / 2
+def constraint1_example1(X):
+    return 4 - (X[0] + 2*X[1])
 
-# Set up the plot
-x1_values = np.linspace(0, 10, 400)  # Range for x1
+def constraint2_example1(X):
+    return X[0] - 1
 
-plt.figure(figsize=(8, 8))
+constraints1 = [{'type': 'ineq', 'fun': constraint1_example1},
+                 {'type': 'ineq', 'fun': constraint2_example1}]
 
-# Plot the constraints
-plt.plot(x1_values, constraint1(x1_values), label=r'$5x_1 + 3x_2 \leq 30$')
-plt.plot(x1_values, constraint2(x1_values), label=r'$x_1 + 2x_2 \leq 18$')
+initial_guess1 = [0, 0]
+solution1 = minimize(objective_func_example1, initial_guess1, constraints=constraints1)
 
-# Fill the feasible region
-x1 = np.linspace(0, 6, 400)
-x2 = np.minimum(constraint1(x1), constraint2(x1))
-plt.fill_between(x1, 0, x2, where=(x2 >= 0), color='lightblue', alpha=0.5)
+def objective_func_example2(X):
+    x, y = X
+    return (x - 1)**2 + (y - 2)**2
 
-# Labels and plot limits
-plt.xlim(0, 10)
-plt.ylim(0, 10)
-plt.xlabel(r'$x_1$')
-plt.ylabel(r'$x_2$')
+def constraint1_example2(X):
+    return 2 - X[0]**2 - X[1]
 
-# Title and legend
-plt.title('Feasible Region for the LPP')
-plt.legend()
+def constraint2_example2(X):
+    return X[0] + X[1] - 4
 
-# Display the plot
-plt.grid(True)
-plt.axhline(0, color='black',linewidth=0.5)
-plt.axvline(0, color='black',linewidth=0.5)
-plt.show()
+constraints2 = [{'type': 'ineq', 'fun': constraint1_example2},
+                 {'type': 'ineq', 'fun': constraint2_example2}]
+
+initial_guess2 = [1, 1]
+solution2 = minimize(objective_func_example2, initial_guess2, constraints=constraints2)
+
+print("Example 1: Lagrange Multiplier Method Solution")
+print("x:", round(solution1.x[0], 3), "y:", round(solution1.x[1], 3))
+print("Objective Function Value:", round(solution1.fun, 3))
+
+print("\nExample 1: KKT Conditions Solution")
+print("x:", round(solution1.x[0], 3), "y:", round(solution1.x[1], 3))
+print("Objective Function Value:", round(solution1.fun, 3))
+
+print("\nExample 2: Lagrange Multiplier Method Solution")
+print("x:", round(solution2.x[0], 3), "y:", round(solution2.x[1], 3))
+print("Objective Function Value:", round(solution2.fun, 3))
+
+print("\nExample 2: KKT Conditions Solution")
+print("x:", round(solution2.x[0], 3), "y:", round(solution2.x[1], 3))
+print("Objective Function Value:", round(solution2.fun, 3))

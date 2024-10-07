@@ -1,5 +1,3 @@
-from collections import deque
-
 # Define the graph
 graph = {
     'Arad': {'Zerind': 75, 'Timisoara': 118, 'Sibiu': 140},
@@ -26,7 +24,7 @@ graph = {
 
 def dfs_explore(graph, start, goal):
     visited = set()
-    stack = [(start, [start])]  # Store current path as well
+    stack = [(start, [start])] 
     while stack:
         (vertex, path) = stack.pop()
         if vertex not in visited:
