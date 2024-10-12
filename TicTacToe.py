@@ -9,6 +9,7 @@ def print_board(board):
 
 # Function to check for a winner
 def check_winner(board):
+    
     for row in board:
         if row[0] == row[1] == row[2] and row[0] != " ":
             return row[0]

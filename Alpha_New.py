@@ -1,3 +1,15 @@
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 SOURCE CODE : //Minimax without using alpha beta pruning
 class TreeNode:
@@ -57,7 +69,7 @@ if __name__ == "__main__":
  print("The optimal value is:", optimalValue)
 '''
 
-
+'''
 def build_tree_from_input():
    
     root_label = input("Enter label for root node: ")
@@ -117,3 +129,6 @@ else:
     # Perform minimax with alpha-beta pruning
     optimalValue = minimax_ab(root, True, float('-inf'), float('inf'))
     print("The optimal value is:", optimalValue)
+
+    
+'''
