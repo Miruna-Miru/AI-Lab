@@ -19,7 +19,7 @@ public class NW_EX4_PortScanner {
             try
             {
                 Socket ss=new Socket(ip,i);
-                System.out.println("Openeed port :  "+i);
+                System.out.println("Opened port :  "+i);
                 ss.close();
             }
             catch(IOException e)

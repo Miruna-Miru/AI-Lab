@@ -1,8 +1,7 @@
 import heapq
 
 def is_valid_state(state, capacities):
-    jug1, jug2 = state
-    return 0 <= jug1 <= capacities[0] and 0 <= jug2 <= capacities[1]
+    return 0 <= state[0] <= capacities[0] and 0 <= state[1] <= capacities[1]
 
 def is_goal_state(state, target):
     return state[0] == target or state[1] == target

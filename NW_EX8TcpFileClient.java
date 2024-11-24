@@ -35,15 +35,13 @@ public class NW_EX8TcpFileClient {
                     System.out.println("Enter new file name : ");
                     String nf = inp.next();
                     InputStream is = s.getInputStream();
-                    FileOutputStream fos = new FileOutputStream(nf);
-                    BufferedOutputStream bos = new BufferedOutputStream(fos);
+                    BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(nf));
                     byte [] buffer = new byte[4090];
                     int bytesread;
                     while((bytesread=is.read(buffer))!=-1)
                       bos.write(buffer,0,bytesread);
                     System.out.println("File saved!!!!!!!!!!");
                     bos.close();
-                    fos.close();
                     is.close();
 
                 }

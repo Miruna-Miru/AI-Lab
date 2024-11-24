@@ -6,6 +6,7 @@ def ucs(graph, start, goal):
     visited = set()
 
     while queue:
+        print(queue)
         cost, node, path = heapq.heappop(queue)
         if node in visited:
             continue

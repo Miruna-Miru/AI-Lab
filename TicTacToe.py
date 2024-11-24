@@ -3,8 +3,8 @@ import math
 # Function to print the board with improved formatting
 def print_board(board):
     for row in board:
-        print(" | ".join(row))
-        print("-" * 9)
+        print("  |  ".join(row))
+        print("-" * 15)
     print()  # Add a new line for better readability
 
 # Function to check for a winner
