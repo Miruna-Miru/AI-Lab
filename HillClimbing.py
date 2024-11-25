@@ -59,5 +59,5 @@ set_heuristic('Z', 1)
 # Perform hill climbing
 start_node = input("Enter start node : ")
 goal_node = input("Enter goal node : ")
-path = hill_climbing(start_node, goal_node)
+path,val = hill_climbing(start_node, goal_node)
 print(f"Path from {start_node} to {goal_node}: {path}")

@@ -2,12 +2,12 @@ import heapq
 
 def ucs(graph, start, goal):
     # Priority queue to explore nodes based on cost
-    queue = [(0, start, [])]  # (cost, node, path)
+    queue = [( start, [],0)]  # (cost, node, path)
     visited = set()
 
     while queue:
         print(queue)
-        cost, node, path = heapq.heappop(queue)
+        node, path,cost = heapq.heappop(queue)
         if node in visited:
             continue
         path = path + [node]
@@ -19,7 +19,7 @@ def ucs(graph, start, goal):
         # Explore neighbors
         for neighbor, weight in graph[node].items():
             if neighbor not in visited:
-                heapq.heappush(queue, (cost + weight, neighbor, path))
+                heapq.heappush(queue, (neighbor, path,cost + weight, ))
 
     return None, float('inf')  # If goal is unreachable
 

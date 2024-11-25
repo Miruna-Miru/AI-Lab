@@ -1,21 +1,17 @@
 import heapq
 
 def astar_search(graph, start, goal, heuristic):
-    # Priority queue to store nodes to be explored: (f_value, node)
+    
     pq = []
     heapq.heappush(pq, (0 + heuristic[start], start))  # (f_value, node)
-   
-    # Dictionary to store g-values (cost from start to node)
+     
     g = {start: 0}
-   
-    # Dictionary to store parent nodes for path reconstruction
     parent = {start: None}
    
-    while pq:
-        # Pop node with the lowest f-value from priority queue
+    while pq:       
         current_cost, current_node = heapq.heappop(pq)
        
-        # If goal node is reached, reconstruct and return path
+       
         if current_node == goal:
             path = []
             while current_node is not None:
@@ -26,12 +22,12 @@ def astar_search(graph, start, goal, heuristic):
        
         # Explore neighbors
         for neighbor, weight in graph[current_node].items():
-            # Calculate tentative g-value
+           
             new_cost = g[current_node] + weight
-            # Only consider this new path if it's better
+            
             if neighbor not in g or new_cost < g[neighbor]:
                 g[neighbor] = new_cost
-                f_value = new_cost + heuristic[neighbor]  # f-value = g-value + heuristic
+                f_value = new_cost + heuristic[neighbor] 
                 heapq.heappush(pq, (f_value, neighbor))
                 parent[neighbor] = current_node
    
@@ -49,7 +45,7 @@ graph = {
 }
 
 heuristic = {
-    'S': 5,  # Heuristic values for each node to the goal
+    'S': 5,  
     'A': 3,
     'B': 4,
     'C': 2,

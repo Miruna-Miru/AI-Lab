@@ -55,3 +55,5 @@ if isinstance(solution, dict):
         print(f"{letter} = {digit}")
 else:
     print(solution)
+
+
